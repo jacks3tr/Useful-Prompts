@@ -1,25 +1,30 @@
-Audit this repository for real, actionable bugs. Investigate and report only. DO NOT fix anything.
+Audit this repository for real, actionable bugs using STATIC CODE INSPECTION ONLY. Investigate and report. DO NOT fix anything.
 
 BOUNDARIES
-Do not edit, create, delete, format, or regenerate project files. Do not install dependencies, change configuration, commit, or open pull requests. Preserve existing uncommitted work. Run checks only when they cannot modify persistent application data or external systems; keep test artifacts in isolated temporary storage.
+Do not modify project files, install dependencies, change configuration, commit, or open pull requests. Preserve existing uncommitted work.
+
+DO NOT run test suites, individual tests, builds, scripts, the application, reproduction attempts, browser interactions, or live/API checks. Do not execute project code or contact external systems. Reading existing tests is allowed. Use read-only file inspection and search only.
 
 INVESTIGATION
-Read repository instructions and establish intended behavior before judging correctness. Trace suspected defects through callers, implementations, and downstream effects. Check existing safeguards before reporting an issue.
+Read repository instructions and establish intended behavior. Inspect relevant implementations, callers, guards, and downstream effects.
 
-Prioritize security and authorization failures, data loss or corruption, incorrect business logic, broken integrations, concurrency issues, persistence/restart failures, and error-handling defects. Inspect tests, but do not treat passing tests as proof of correctness.
+Prioritize security and authorization failures, data loss or corruption, incorrect business logic, broken integrations, concurrency issues, persistence/restart failures, and error-handling defects.
 
 Exclude style preferences, refactoring opportunities, feature requests, and unsupported hypotheticals. Do not manufacture findings to meet a quota.
+
+STOP RULE
+This is bug discovery, not exhaustive verification. Make one focused code-review pass per candidate. Once a concrete code path supports the finding, record it and move on. If evidence remains inconclusive, mark it unverified, state what is missing, and move on. Do not repeatedly revisit findings or attempt runtime proof. Deeper verification belongs to Part 2.
 
 REPORT
 Order findings by severity. For each bug include:
 - Severity and concise title.
 - Exact file path and smallest relevant line range.
-- Triggering conditions and reproduction steps or a concrete failing execution path.
+- Triggering conditions and concrete failing code path.
 - Expected versus actual behavior and practical impact.
-- Supporting evidence and confidence: reproduced, established by code analysis, or suspected pending verification.
+- Supporting code evidence.
 
-Separate confirmed findings from unverified concerns. Deduplicate findings sharing the same root cause. Never claim reproduction or test execution without evidence.
+Separate code-supported findings from unverified concerns. Deduplicate findings sharing the same root cause. Clearly state that findings come from static analysis and were not runtime-tested.
 
-Finish with areas inspected, checks actually run and their results, and coverage limitations. If no bugs are substantiated, say so without declaring the repository bug-free.
+Finish with areas inspected and coverage limitations. If no bugs are substantiated, say so without declaring the repository bug-free.
 
-Return the report in chat, without patches or implementation changes. Stop after reporting.
+Return the report in chat, without patches or file changes. Stop after reporting.
